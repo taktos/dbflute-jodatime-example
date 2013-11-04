@@ -24,6 +24,7 @@
 map:{
     # AutoMapping for Numeric and Decimal
     ; NUMERIC = $$AutoMapping$$ ; DECIMAL = $$AutoMapping$$
+    ; DATE = org.joda.time.LocalDate
 }
 # ----------------/
 #
