@@ -2,5 +2,6 @@
 /.settings
 /.project
 /.classpath
+/.springBeans
 /mydbflute
 /dbflute_exampledb/log
