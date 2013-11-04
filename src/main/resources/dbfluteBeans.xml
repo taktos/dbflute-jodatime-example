@@ -5,7 +5,7 @@
 >
 <beans>
     <!-- The components of DBFlute Runtime. -->
-    <bean id="introduction" class="com.example.dbflute.jodatime.allcommon.DBFluteInitializer">
+    <bean id="introduction" class="com.example.dbflute.jodatime.ex.ExtendedDBFluteInitializer">
         <constructor-arg index="0"><ref bean="dataSource"/></constructor-arg>
     </bean>
     <bean id="invokerAssistant" class="com.example.dbflute.jodatime.allcommon.ImplementedInvokerAssistant" autowire="byType">

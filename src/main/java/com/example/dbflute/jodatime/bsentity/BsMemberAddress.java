@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
-import java.util.Date;
 
 import org.seasar.dbflute.dbmeta.DBMeta;
 import org.seasar.dbflute.Entity;
@@ -48,8 +47,8 @@ import com.example.dbflute.jodatime.exentity.*;
  * /= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
  * Integer memberAddressId = entity.getMemberAddressId();
  * Integer memberId = entity.getMemberId();
- * java.util.Date validBeginDate = entity.getValidBeginDate();
- * java.util.Date validEndDate = entity.getValidEndDate();
+ * org.joda.time.LocalDate validBeginDate = entity.getValidBeginDate();
+ * org.joda.time.LocalDate validEndDate = entity.getValidEndDate();
  * String address = entity.getAddress();
  * Integer regionId = entity.getRegionId();
  * java.sql.Timestamp registerDatetime = entity.getRegisterDatetime();
@@ -93,10 +92,10 @@ public abstract class BsMemberAddress implements Entity, Serializable, Cloneable
     protected Integer _memberId;
 
     /** VALID_BEGIN_DATE: {UQ+, NotNull, DATE(8)} */
-    protected java.util.Date _validBeginDate;
+    protected org.joda.time.LocalDate _validBeginDate;
 
     /** VALID_END_DATE: {NotNull, DATE(8)} */
-    protected java.util.Date _validEndDate;
+    protected org.joda.time.LocalDate _validEndDate;
 
     /** ADDRESS: {NotNull, VARCHAR(200)} */
     protected String _address;
@@ -340,8 +339,8 @@ public abstract class BsMemberAddress implements Entity, Serializable, Cloneable
         String delimiter = ", ";
         sb.append(delimiter).append(getMemberAddressId());
         sb.append(delimiter).append(getMemberId());
-        sb.append(delimiter).append(xfUD(getValidBeginDate()));
-        sb.append(delimiter).append(xfUD(getValidEndDate()));
+        sb.append(delimiter).append(getValidBeginDate());
+        sb.append(delimiter).append(getValidEndDate());
         sb.append(delimiter).append(getAddress());
         sb.append(delimiter).append(getRegionId());
         sb.append(delimiter).append(getRegisterDatetime());
@@ -354,12 +353,6 @@ public abstract class BsMemberAddress implements Entity, Serializable, Cloneable
         }
         sb.insert(0, "{").append("}");
         return sb.toString();
-    }
-    protected String xfUD(Date date) { // formatUtilDate()
-        return InternalUtil.toString(date, xgDP());
-    }
-    protected String xgDP() { // getDatePattern
-        return "yyyy-MM-dd";
     }
     protected String buildRelationString() {
         StringBuilder sb = new StringBuilder();
@@ -435,7 +428,7 @@ public abstract class BsMemberAddress implements Entity, Serializable, Cloneable
      * 前の有効終了日の次の日の値が格納される。
      * @return The value of the column 'VALID_BEGIN_DATE'. (basically NotNull if selected: for the constraint)
      */
-    public java.util.Date getValidBeginDate() {
+    public org.joda.time.LocalDate getValidBeginDate() {
         return _validBeginDate;
     }
 
@@ -445,7 +438,7 @@ public abstract class BsMemberAddress implements Entity, Serializable, Cloneable
      * 前の有効終了日の次の日の値が格納される。
      * @param validBeginDate The value of the column 'VALID_BEGIN_DATE'. (basically NotNull if update: for the constraint)
      */
-    public void setValidBeginDate(java.util.Date validBeginDate) {
+    public void setValidBeginDate(org.joda.time.LocalDate validBeginDate) {
         __modifiedProperties.addPropertyName("validBeginDate");
         this._validBeginDate = validBeginDate;
     }
@@ -456,7 +449,7 @@ public abstract class BsMemberAddress implements Entity, Serializable, Cloneable
      * 期間の最後の日が格納される。基本的に、次の有効開始日の一日前の値となるが、次の有効期間がない場合は 9999/12/31 となる。
      * @return The value of the column 'VALID_END_DATE'. (basically NotNull if selected: for the constraint)
      */
-    public java.util.Date getValidEndDate() {
+    public org.joda.time.LocalDate getValidEndDate() {
         return _validEndDate;
     }
 
@@ -466,7 +459,7 @@ public abstract class BsMemberAddress implements Entity, Serializable, Cloneable
      * 期間の最後の日が格納される。基本的に、次の有効開始日の一日前の値となるが、次の有効期間がない場合は 9999/12/31 となる。
      * @param validEndDate The value of the column 'VALID_END_DATE'. (basically NotNull if update: for the constraint)
      */
-    public void setValidEndDate(java.util.Date validEndDate) {
+    public void setValidEndDate(org.joda.time.LocalDate validEndDate) {
         __modifiedProperties.addPropertyName("validEndDate");
         this._validEndDate = validEndDate;
     }

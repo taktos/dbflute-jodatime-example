@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
-import java.util.Date;
 
 import org.seasar.dbflute.dbmeta.DBMeta;
 import org.seasar.dbflute.Entity;
@@ -51,7 +50,7 @@ import com.example.dbflute.jodatime.exentity.*;
  * String memberAccount = entity.getMemberAccount();
  * String memberStatusCode = entity.getMemberStatusCode();
  * java.sql.Timestamp formalizedDatetime = entity.getFormalizedDatetime();
- * java.util.Date birthdate = entity.getBirthdate();
+ * org.joda.time.LocalDate birthdate = entity.getBirthdate();
  * java.sql.Timestamp registerDatetime = entity.getRegisterDatetime();
  * String registerUser = entity.getRegisterUser();
  * java.sql.Timestamp updateDatetime = entity.getUpdateDatetime();
@@ -102,7 +101,7 @@ public abstract class BsMember implements Entity, Serializable, Cloneable {
     protected java.sql.Timestamp _formalizedDatetime;
 
     /** BIRTHDATE: {DATE(8)} */
-    protected java.util.Date _birthdate;
+    protected org.joda.time.LocalDate _birthdate;
 
     /** REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} */
     protected java.sql.Timestamp _registerDatetime;
@@ -495,7 +494,7 @@ public abstract class BsMember implements Entity, Serializable, Cloneable {
         sb.append(delimiter).append(getMemberAccount());
         sb.append(delimiter).append(getMemberStatusCode());
         sb.append(delimiter).append(getFormalizedDatetime());
-        sb.append(delimiter).append(xfUD(getBirthdate()));
+        sb.append(delimiter).append(getBirthdate());
         sb.append(delimiter).append(getRegisterDatetime());
         sb.append(delimiter).append(getRegisterUser());
         sb.append(delimiter).append(getUpdateDatetime());
@@ -506,12 +505,6 @@ public abstract class BsMember implements Entity, Serializable, Cloneable {
         }
         sb.insert(0, "{").append("}");
         return sb.toString();
-    }
-    protected String xfUD(Date date) { // formatUtilDate()
-        return InternalUtil.toString(date, xgDP());
-    }
-    protected String xgDP() { // getDatePattern
-        return "yyyy-MM-dd";
     }
     protected String buildRelationString() {
         StringBuilder sb = new StringBuilder();
@@ -659,7 +652,7 @@ public abstract class BsMember implements Entity, Serializable, Cloneable {
      * 生年月日: 必須項目ではないので、このデータがない会員もいる。
      * @return The value of the column 'BIRTHDATE'. (NullAllowed even if selected: for no constraint)
      */
-    public java.util.Date getBirthdate() {
+    public org.joda.time.LocalDate getBirthdate() {
         return _birthdate;
     }
 
@@ -668,7 +661,7 @@ public abstract class BsMember implements Entity, Serializable, Cloneable {
      * 生年月日: 必須項目ではないので、このデータがない会員もいる。
      * @param birthdate The value of the column 'BIRTHDATE'. (NullAllowed: null update allowed for no constraint)
      */
-    public void setBirthdate(java.util.Date birthdate) {
+    public void setBirthdate(org.joda.time.LocalDate birthdate) {
         __modifiedProperties.addPropertyName("birthdate");
         this._birthdate = birthdate;
     }

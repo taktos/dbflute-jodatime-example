@@ -298,8 +298,8 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * VALID_BEGIN_DATE: {UQ+, NotNull, DATE(8)}
      * @param validBeginDate The value of validBeginDate as equal. (NullAllowed: if null, no condition)
      */
-    public void setValidBeginDate_Equal(java.util.Date validBeginDate) {
-        regValidBeginDate(CK_EQ,  fCTPD(validBeginDate));
+    public void setValidBeginDate_Equal(org.joda.time.LocalDate validBeginDate) {
+        regValidBeginDate(CK_EQ,  validBeginDate);
     }
 
     /**
@@ -307,8 +307,8 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * VALID_BEGIN_DATE: {UQ+, NotNull, DATE(8)}
      * @param validBeginDate The value of validBeginDate as greaterThan. (NullAllowed: if null, no condition)
      */
-    public void setValidBeginDate_GreaterThan(java.util.Date validBeginDate) {
-        regValidBeginDate(CK_GT,  fCTPD(validBeginDate));
+    public void setValidBeginDate_GreaterThan(org.joda.time.LocalDate validBeginDate) {
+        regValidBeginDate(CK_GT,  validBeginDate);
     }
 
     /**
@@ -316,8 +316,8 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * VALID_BEGIN_DATE: {UQ+, NotNull, DATE(8)}
      * @param validBeginDate The value of validBeginDate as lessThan. (NullAllowed: if null, no condition)
      */
-    public void setValidBeginDate_LessThan(java.util.Date validBeginDate) {
-        regValidBeginDate(CK_LT,  fCTPD(validBeginDate));
+    public void setValidBeginDate_LessThan(org.joda.time.LocalDate validBeginDate) {
+        regValidBeginDate(CK_LT,  validBeginDate);
     }
 
     /**
@@ -325,8 +325,8 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * VALID_BEGIN_DATE: {UQ+, NotNull, DATE(8)}
      * @param validBeginDate The value of validBeginDate as greaterEqual. (NullAllowed: if null, no condition)
      */
-    public void setValidBeginDate_GreaterEqual(java.util.Date validBeginDate) {
-        regValidBeginDate(CK_GE,  fCTPD(validBeginDate));
+    public void setValidBeginDate_GreaterEqual(org.joda.time.LocalDate validBeginDate) {
+        regValidBeginDate(CK_GE,  validBeginDate);
     }
 
     /**
@@ -334,36 +334,8 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * VALID_BEGIN_DATE: {UQ+, NotNull, DATE(8)}
      * @param validBeginDate The value of validBeginDate as lessEqual. (NullAllowed: if null, no condition)
      */
-    public void setValidBeginDate_LessEqual(java.util.Date validBeginDate) {
-        regValidBeginDate(CK_LE, fCTPD(validBeginDate));
-    }
-
-    /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
-     * VALID_BEGIN_DATE: {UQ+, NotNull, DATE(8)}
-     * <pre>e.g. setValidBeginDate_FromTo(fromDate, toDate, new <span style="color: #FD4747">FromToOption</span>().compareAsDate());</pre>
-     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of validBeginDate. (NullAllowed: if null, no from-condition)
-     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of validBeginDate. (NullAllowed: if null, no to-condition)
-     * @param fromToOption The option of from-to. (NotNull)
-     */
-    public void setValidBeginDate_FromTo(java.util.Date fromDatetime, java.util.Date toDatetime, FromToOption fromToOption) {
-        regFTQ(fCTPD(fromDatetime), fCTPD(toDatetime), getCValueValidBeginDate(), "VALID_BEGIN_DATE", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
-     * VALID_BEGIN_DATE: {UQ+, NotNull, DATE(8)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #FD4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of validBeginDate. (NullAllowed: if null, no from-condition)
-     * @param toDate The to-date(yyyy/MM/dd) of validBeginDate. (NullAllowed: if null, no to-condition)
-     */
-    public void setValidBeginDate_DateFromTo(java.util.Date fromDate, java.util.Date toDate) {
-        setValidBeginDate_FromTo(fromDate, toDate, new FromToOption().compareAsDate());
+    public void setValidBeginDate_LessEqual(org.joda.time.LocalDate validBeginDate) {
+        regValidBeginDate(CK_LE, validBeginDate);
     }
 
     protected void regValidBeginDate(ConditionKey k, Object v) { regQ(k, v, getCValueValidBeginDate(), "VALID_BEGIN_DATE"); }
@@ -374,8 +346,8 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * VALID_END_DATE: {NotNull, DATE(8)}
      * @param validEndDate The value of validEndDate as equal. (NullAllowed: if null, no condition)
      */
-    public void setValidEndDate_Equal(java.util.Date validEndDate) {
-        regValidEndDate(CK_EQ,  fCTPD(validEndDate));
+    public void setValidEndDate_Equal(org.joda.time.LocalDate validEndDate) {
+        regValidEndDate(CK_EQ,  validEndDate);
     }
 
     /**
@@ -383,8 +355,8 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * VALID_END_DATE: {NotNull, DATE(8)}
      * @param validEndDate The value of validEndDate as greaterThan. (NullAllowed: if null, no condition)
      */
-    public void setValidEndDate_GreaterThan(java.util.Date validEndDate) {
-        regValidEndDate(CK_GT,  fCTPD(validEndDate));
+    public void setValidEndDate_GreaterThan(org.joda.time.LocalDate validEndDate) {
+        regValidEndDate(CK_GT,  validEndDate);
     }
 
     /**
@@ -392,8 +364,8 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * VALID_END_DATE: {NotNull, DATE(8)}
      * @param validEndDate The value of validEndDate as lessThan. (NullAllowed: if null, no condition)
      */
-    public void setValidEndDate_LessThan(java.util.Date validEndDate) {
-        regValidEndDate(CK_LT,  fCTPD(validEndDate));
+    public void setValidEndDate_LessThan(org.joda.time.LocalDate validEndDate) {
+        regValidEndDate(CK_LT,  validEndDate);
     }
 
     /**
@@ -401,8 +373,8 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * VALID_END_DATE: {NotNull, DATE(8)}
      * @param validEndDate The value of validEndDate as greaterEqual. (NullAllowed: if null, no condition)
      */
-    public void setValidEndDate_GreaterEqual(java.util.Date validEndDate) {
-        regValidEndDate(CK_GE,  fCTPD(validEndDate));
+    public void setValidEndDate_GreaterEqual(org.joda.time.LocalDate validEndDate) {
+        regValidEndDate(CK_GE,  validEndDate);
     }
 
     /**
@@ -410,36 +382,8 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * VALID_END_DATE: {NotNull, DATE(8)}
      * @param validEndDate The value of validEndDate as lessEqual. (NullAllowed: if null, no condition)
      */
-    public void setValidEndDate_LessEqual(java.util.Date validEndDate) {
-        regValidEndDate(CK_LE, fCTPD(validEndDate));
-    }
-
-    /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
-     * VALID_END_DATE: {NotNull, DATE(8)}
-     * <pre>e.g. setValidEndDate_FromTo(fromDate, toDate, new <span style="color: #FD4747">FromToOption</span>().compareAsDate());</pre>
-     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of validEndDate. (NullAllowed: if null, no from-condition)
-     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of validEndDate. (NullAllowed: if null, no to-condition)
-     * @param fromToOption The option of from-to. (NotNull)
-     */
-    public void setValidEndDate_FromTo(java.util.Date fromDatetime, java.util.Date toDatetime, FromToOption fromToOption) {
-        regFTQ(fCTPD(fromDatetime), fCTPD(toDatetime), getCValueValidEndDate(), "VALID_END_DATE", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
-     * VALID_END_DATE: {NotNull, DATE(8)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #FD4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of validEndDate. (NullAllowed: if null, no from-condition)
-     * @param toDate The to-date(yyyy/MM/dd) of validEndDate. (NullAllowed: if null, no to-condition)
-     */
-    public void setValidEndDate_DateFromTo(java.util.Date fromDate, java.util.Date toDate) {
-        setValidEndDate_FromTo(fromDate, toDate, new FromToOption().compareAsDate());
+    public void setValidEndDate_LessEqual(org.joda.time.LocalDate validEndDate) {
+        regValidEndDate(CK_LE, validEndDate);
     }
 
     protected void regValidEndDate(ConditionKey k, Object v) { regQ(k, v, getCValueValidEndDate(), "VALID_END_DATE"); }
@@ -744,34 +688,6 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
         regRegisterDatetime(CK_LE, registerDatetime);
     }
 
-    /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, new <span style="color: #FD4747">FromToOption</span>().compareAsDate());</pre>
-     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (NullAllowed: if null, no from-condition)
-     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (NullAllowed: if null, no to-condition)
-     * @param fromToOption The option of from-to. (NotNull)
-     */
-    public void setRegisterDatetime_FromTo(java.util.Date fromDatetime, java.util.Date toDatetime, FromToOption fromToOption) {
-        regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), getCValueRegisterDatetime(), "REGISTER_DATETIME", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #FD4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of registerDatetime. (NullAllowed: if null, no from-condition)
-     * @param toDate The to-date(yyyy/MM/dd) of registerDatetime. (NullAllowed: if null, no to-condition)
-     */
-    public void setRegisterDatetime_DateFromTo(java.util.Date fromDate, java.util.Date toDate) {
-        setRegisterDatetime_FromTo(fromDate, toDate, new FromToOption().compareAsDate());
-    }
-
     protected void regRegisterDatetime(ConditionKey k, Object v) { regQ(k, v, getCValueRegisterDatetime(), "REGISTER_DATETIME"); }
     abstract protected ConditionValue getCValueRegisterDatetime();
 
@@ -940,34 +856,6 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      */
     public void setUpdateDatetime_LessEqual(java.sql.Timestamp updateDatetime) {
         regUpdateDatetime(CK_LE, updateDatetime);
-    }
-
-    /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, new <span style="color: #FD4747">FromToOption</span>().compareAsDate());</pre>
-     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (NullAllowed: if null, no from-condition)
-     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (NullAllowed: if null, no to-condition)
-     * @param fromToOption The option of from-to. (NotNull)
-     */
-    public void setUpdateDatetime_FromTo(java.util.Date fromDatetime, java.util.Date toDatetime, FromToOption fromToOption) {
-        regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), getCValueUpdateDatetime(), "UPDATE_DATETIME", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #FD4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of updateDatetime. (NullAllowed: if null, no from-condition)
-     * @param toDate The to-date(yyyy/MM/dd) of updateDatetime. (NullAllowed: if null, no to-condition)
-     */
-    public void setUpdateDatetime_DateFromTo(java.util.Date fromDate, java.util.Date toDate) {
-        setUpdateDatetime_FromTo(fromDate, toDate, new FromToOption().compareAsDate());
     }
 
     protected void regUpdateDatetime(ConditionKey k, Object v) { regQ(k, v, getCValueUpdateDatetime(), "UPDATE_DATETIME"); }

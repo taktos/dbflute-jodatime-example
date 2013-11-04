@@ -59,11 +59,11 @@ public class MemberAddressDbm extends AbstractDBMeta {
     }
     public static class EpgValidBeginDate implements PropertyGateway {
         public Object read(Entity e) { return ((MemberAddress)e).getValidBeginDate(); }
-        public void write(Entity e, Object v) { ((MemberAddress)e).setValidBeginDate((java.util.Date)v); }
+        public void write(Entity e, Object v) { ((MemberAddress)e).setValidBeginDate((org.joda.time.LocalDate)v); }
     }
     public static class EpgValidEndDate implements PropertyGateway {
         public Object read(Entity e) { return ((MemberAddress)e).getValidEndDate(); }
-        public void write(Entity e, Object v) { ((MemberAddress)e).setValidEndDate((java.util.Date)v); }
+        public void write(Entity e, Object v) { ((MemberAddress)e).setValidEndDate((org.joda.time.LocalDate)v); }
     }
     public static class EpgAddress implements PropertyGateway {
         public Object read(Entity e) { return ((MemberAddress)e).getAddress(); }
@@ -108,10 +108,10 @@ public class MemberAddressDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnMemberAddressId = cci("MEMBER_ADDRESS_ID", "MEMBER_ADDRESS_ID", null, null, true, "memberAddressId", Integer.class, true, true, "INTEGER", 10, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_30D5878E_735D_4FB4_94D9_BE4C018E9D50", false, null, null, null, null, null);
+    protected final ColumnInfo _columnMemberAddressId = cci("MEMBER_ADDRESS_ID", "MEMBER_ADDRESS_ID", null, null, true, "memberAddressId", Integer.class, true, true, "INTEGER", 10, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_3B73A928_F0C8_4D52_9683_6DC6D1EB4EB6", false, null, null, null, null, null);
     protected final ColumnInfo _columnMemberId = cci("MEMBER_ID", "MEMBER_ID", null, null, true, "memberId", Integer.class, false, false, "INTEGER", 10, 0, null, false, null, null, "member", null, null);
-    protected final ColumnInfo _columnValidBeginDate = cci("VALID_BEGIN_DATE", "VALID_BEGIN_DATE", null, null, true, "validBeginDate", java.util.Date.class, false, false, "DATE", 8, 0, null, false, null, null, null, null, null);
-    protected final ColumnInfo _columnValidEndDate = cci("VALID_END_DATE", "VALID_END_DATE", null, null, true, "validEndDate", java.util.Date.class, false, false, "DATE", 8, 0, null, false, null, null, null, null, null);
+    protected final ColumnInfo _columnValidBeginDate = cci("VALID_BEGIN_DATE", "VALID_BEGIN_DATE", null, null, true, "validBeginDate", org.joda.time.LocalDate.class, false, false, "DATE", 8, 0, null, false, null, null, null, null, null);
+    protected final ColumnInfo _columnValidEndDate = cci("VALID_END_DATE", "VALID_END_DATE", null, null, true, "validEndDate", org.joda.time.LocalDate.class, false, false, "DATE", 8, 0, null, false, null, null, null, null, null);
     protected final ColumnInfo _columnAddress = cci("ADDRESS", "ADDRESS", null, null, true, "address", String.class, false, false, "VARCHAR", 200, 0, null, false, null, null, null, null, null);
     protected final ColumnInfo _columnRegionId = cci("REGION_ID", "REGION_ID", null, null, true, "regionId", Integer.class, false, false, "INTEGER", 10, 0, null, false, null, null, "region", null, null);
     protected final ColumnInfo _columnRegisterDatetime = cci("REGISTER_DATETIME", "REGISTER_DATETIME", null, null, true, "registerDatetime", java.sql.Timestamp.class, false, false, "TIMESTAMP", 23, 10, null, false, null, null, null, null, null);
