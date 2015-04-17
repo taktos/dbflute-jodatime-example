@@ -3,6 +3,13 @@ DBFlute + Joda-Time example
 
 DBFluteを使って、DatabaseのDATE型をJoda-TimeのLocalDateにマッピングするサンプル。
 
+## ！！！重要なお知らせ！！！
+
+dbflute-1.0.5Kから、デフォルトでJoda-Timeとマッピングする機能がサポートされました。
+このサンプルでやっていることは全て不要です。
+
+詳しくはこちらの記事をどうぞ http://d.hatena.ne.jp/jflute/20140829/localdate
+
 ## やっていること
 Joda-Timeとのマッピングに必要な設定は df4474ba6ac506551ac89ee3d7254271b75a2c42 に含まれています。
 - `typeMappingMap`でJDBCのDATE型を`org.joda.time.LocalDate`に紐付け
